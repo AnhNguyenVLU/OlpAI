@@ -1,0 +1,38 @@
+# Dữ liệu sinh ra & bài nộp — tái tạo bằng generate_data.py / baseline.py
+data/
+**/data/
+submission*.csv
+*.npz
+*.png
+!docs/**/*.png
+
+# Model weights / artefacts
+*.pt
+*.pth
+*.ckpt
+*.joblib
+*.pkl
+outputs/
+runs/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+
+# Ngoại lệ: dữ liệu public phát hành cho sinh viên (không chứa đáp án tập ẩn)
+!exams/*/bai-*/public_data.zip
+
+# Bộ công cụ giáo viên — phát riêng, KHÔNG đưa lên repo thí sinh
+exams/**/generate_data.py
+exams/**/SOLUTION_NOTES.md
+exams/**/TEACHER.md
+teacher-kit*.zip
