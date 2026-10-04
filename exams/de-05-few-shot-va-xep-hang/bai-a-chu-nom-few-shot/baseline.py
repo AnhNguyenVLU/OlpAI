@@ -1,11 +1,3 @@
-"""Baseline bài A: nearest centroid trên pixel thô (sau chuẩn hoá từng ảnh).
-
-Với mỗi episode: chuẩn hoá mỗi ảnh (đảo mực, căn trọng tâm, mean 0 / norm 1), tính tâm của 5 ảnh support
-mỗi lớp, gán query cho tâm gần nhất (khoảng cách Euclid). Không dùng tập train.
-
-Dùng: python baseline.py [--data ./data] [--split public|private] [--out ./submission.csv]
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -23,7 +15,6 @@ HERE = Path(__file__).resolve().parent
 
 
 def normalize(x: np.ndarray) -> np.ndarray:
-    """Chuẩn hoá: đảo về 'mực' theo nền từng ảnh, căn trọng tâm mực về giữa, trừ trung bình, chia chuẩn L2."""
     x = x.astype(np.float32)
     flat = x.reshape(len(x), -1)
     bg, lo = np.median(flat, 1)[:, None, None], flat.min(1)[:, None, None]
@@ -41,7 +32,7 @@ def normalize(x: np.ndarray) -> np.ndarray:
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap = argparse.ArgumentParser(description="Baseline bài A: nearest centroid trên pixel thô (sau chuẩn hoá từng ảnh).")
     ap.add_argument("--data", type=Path, default=HERE / "data")
     ap.add_argument("--split", choices=["public", "private"], default="public")
     ap.add_argument("--out", type=Path, default=Path("submission.csv"))

@@ -1,8 +1,3 @@
-"""Chấm bài A (dịch máy Kơ Ru -> Việt): chrF (β=1, n=1..6) toàn corpus, kèm BLEU-4 tham khảo.
-
-Dùng: python score.py --pred submission.csv --data data [--split public|private]
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -30,7 +25,6 @@ def char_ngrams(s: str, n: int) -> Counter:
 
 
 def chrf(hyps: list[str], refs: list[str]) -> float:
-    """chrF toàn corpus (kiểu sacrebleu): cộng dồn thống kê n-gram trên mọi câu, trung bình P/R theo n rồi F_β."""
     match = [0] * CHAR_ORDER
     hyp_tot = [0] * CHAR_ORDER
     ref_tot = [0] * CHAR_ORDER
@@ -50,7 +44,6 @@ def chrf(hyps: list[str], refs: list[str]) -> float:
 
 
 def bleu(hyps: list[str], refs: list[str], max_n: int = 4) -> float:
-    """BLEU-4 toàn corpus trên token tách theo khoảng trắng (chỉ để tham khảo)."""
     match = [0] * max_n
     total = [0] * max_n
     hyp_len = ref_len = 0
@@ -89,7 +82,7 @@ def load_pred(path: Path, ids: list[str]) -> list[str]:
 
 def main() -> None:
     here = Path(__file__).resolve().parent
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap = argparse.ArgumentParser(description="Chấm bài A (dịch máy Kơ Ru -> Việt): chrF (β=1, n=1..6) toàn corpus, kèm BLEU-4 tham khảo.")
     ap.add_argument("--pred", type=Path, default=here / "submission.csv")
     ap.add_argument("--data", type=Path, default=here / "data")
     ap.add_argument("--split", choices=["public", "private"], default="public")

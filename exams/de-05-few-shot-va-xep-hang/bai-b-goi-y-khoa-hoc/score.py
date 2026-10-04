@@ -1,9 +1,3 @@
-"""Chấm bài B: NDCG@10 trung bình theo người dùng (điểm chính), kèm Recall@10.
-
-Quan hệ liên quan nhị phân: khoá người dùng thực sự ghi danh trong tuần mục tiêu.
-Dùng: python score.py [--pred ./submission.csv] [--data ./data] [--split public|private]
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -49,7 +43,7 @@ def load_pred(path: Path, users: list[str], valid_courses: set[str]) -> dict[str
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap = argparse.ArgumentParser(description="Chấm bài B: NDCG@10 trung bình theo người dùng (điểm chính), kèm Recall@10.")
     ap.add_argument("--pred", type=Path, default=Path("submission.csv"))
     ap.add_argument("--data", type=Path, default=HERE / "data")
     ap.add_argument("--split", choices=["public", "private"], default="public")

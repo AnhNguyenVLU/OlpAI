@@ -1,12 +1,3 @@
-"""Chấm bài A — Phục hồi dấu tiếng Việt (độ chính xác âm tiết, trung bình theo câu).
-
-python score.py [--pred submission.csv] [--data data] [--split public|private]
-
-Âm tiết = token (tách theo khoảng trắng) sau khi chuẩn hoá NFC, chữ thường, bỏ ký tự không phải chữ/số
-ở hai đầu; token không chứa chữ cái bị bỏ qua. Điểm câu = tỷ lệ âm tiết đúng vị trí (0 nếu số âm tiết lệch).
-Báo thêm độ chính xác gộp (micro), tỷ lệ câu đúng hoàn toàn và nửa độ rộng khoảng tin cậy 95%.
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -26,7 +17,6 @@ EDGE_RE = re.compile(r"^\W+|\W+$", re.UNICODE)
 
 
 def syllables(text: str) -> list[str]:
-    """Danh sách âm tiết đã chuẩn hoá (NFC, chữ thường, bỏ dấu câu hai đầu)."""
     out = []
     for tok in unicodedata.normalize("NFC", str(text)).lower().split():
         tok = EDGE_RE.sub("", tok)
@@ -37,7 +27,7 @@ def syllables(text: str) -> list[str]:
 
 def main() -> None:
     here = Path(__file__).parent
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap = argparse.ArgumentParser(description="Chấm bài A — Phục hồi dấu tiếng Việt (độ chính xác âm tiết, trung bình theo câu).")
     ap.add_argument("--pred", type=Path, default=Path("submission.csv"))
     ap.add_argument("--data", type=Path, default=here / "data")
     ap.add_argument("--split", choices=["public", "private"], default="public")

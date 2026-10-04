@@ -1,8 +1,3 @@
-"""Chấm bài A: accuracy trung bình theo episode (mean over episodes của accuracy trên query).
-
-Dùng: python score.py [--pred ./submission.csv] [--data ./data] [--split public|private]
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -39,7 +34,7 @@ def load_pred(path: Path, truth: pd.DataFrame) -> pd.Series:
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap = argparse.ArgumentParser(description="Chấm bài A: accuracy trung bình theo episode (mean over episodes của accuracy trên query).")
     ap.add_argument("--pred", type=Path, default=Path("submission.csv"))
     ap.add_argument("--data", type=Path, default=HERE / "data")
     ap.add_argument("--split", choices=["public", "private"], default="public")

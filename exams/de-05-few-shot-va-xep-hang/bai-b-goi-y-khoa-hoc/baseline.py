@@ -1,11 +1,3 @@
-"""Baseline bài B: gợi ý top-10 khoá phổ biến nhất toàn cục (theo tổng lượt ghi danh trong train).
-
-Với mỗi người dùng cần gợi ý: lấy danh sách khoá xếp theo tổng lượt ghi danh của nhóm người học chính
-(train/interactions.csv), bỏ các khoá người đó đã ghi danh (theo lịch sử trong thư mục test), giữ 10 khoá đầu.
-
-Dùng: python baseline.py [--data ./data] [--split public|private] [--out ./submission.csv]
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -22,7 +14,7 @@ K = 10
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap = argparse.ArgumentParser(description="Baseline bài B: gợi ý top-10 khoá phổ biến nhất toàn cục (theo tổng lượt ghi danh trong train).")
     ap.add_argument("--data", type=Path, default=HERE / "data")
     ap.add_argument("--split", choices=["public", "private"], default="public")
     ap.add_argument("--out", type=Path, default=Path("submission.csv"))

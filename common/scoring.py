@@ -1,14 +1,3 @@
-"""Tiện ích chấm điểm dùng chung cho mọi bài.
-
-Quy đổi metric thô sang thang 0–100 theo kiểu IOAI/OlpAI:
-
-    Điểm = 100 · clip((metric − baseline) / (target − baseline), 0, 1)
-
-- ``baseline``: điểm thô của lời giải cơ sở (baseline.py) → 0 điểm.
-- ``target``: điểm thô "Điểm BTC" → 100 điểm.
-Hỗ trợ cả metric càng lớn càng tốt và càng nhỏ càng tốt (target < baseline).
-"""
-
 from __future__ import annotations
 
 import json
@@ -34,19 +23,16 @@ class Threshold:
 
 
 def task_name(script: str | Path, split: str) -> str:
-    """Tên task chuẩn: ``<thư mục đề>/<thư mục bài>[<split>]``, lấy từ vị trí score.py."""
     task_dir = Path(script).resolve().parent
     return f"{task_dir.parent.name}/{task_dir.name}[{split}]"
 
 
 def fail(message: str) -> NoReturn:
-    """Báo lỗi bài nộp/dữ liệu và thoát với mã 1."""
     sys.stderr.write(f"LỖI: {message}\n")
     raise SystemExit(1)
 
 
 def require_data(path: Path, split: str = "public") -> None:
-    """Thoát với hướng dẫn rõ ràng nếu thư mục dữ liệu chưa tồn tại."""
     if path.exists():
         return
     if split == "public":
@@ -55,11 +41,6 @@ def require_data(path: Path, split: str = "public") -> None:
 
 
 def read_submission(path: str | Path, required: Iterable[str], **read_csv_kwargs) -> pd.DataFrame:
-    """Đọc file nộp CSV (UTF-8, chấp nhận BOM/CRLF), chuẩn hoá tên cột và kiểm tra cột bắt buộc.
-
-    Tên cột được so khớp không phân biệt hoa thường/khoảng trắng; cột thừa bị bỏ qua.
-    Trả về DataFrame chỉ gồm các cột bắt buộc theo đúng thứ tự ``required``.
-    """
     required = list(required)
     path = Path(path)
     if not path.exists():
@@ -79,7 +60,6 @@ def read_submission(path: str | Path, required: Iterable[str], **read_csv_kwargs
 
 
 def report(task: str, metrics: dict[str, float], points: float) -> None:
-    """In kết quả chấm dưới dạng JSON một dòng (dễ parse trong CI)."""
     payload = {"task": task, "metrics": {k: round(float(v), 6) for k, v in metrics.items()}, "points": points}
     json.dump(payload, sys.stdout, ensure_ascii=False)
     sys.stdout.write("\n")

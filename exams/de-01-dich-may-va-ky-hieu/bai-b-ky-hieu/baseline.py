@@ -1,8 +1,3 @@
-"""Baseline bài B: thống kê mean/std theo từng keypoint (bỏ qua NaN) + LogisticRegression.
-
-Dùng: python baseline.py --data data --out submission.csv [--split public|private]
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -41,7 +36,7 @@ def features(seqs: list[np.ndarray]) -> np.ndarray:
 
 def main() -> None:
     here = Path(__file__).resolve().parent
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap = argparse.ArgumentParser(description="Baseline bài B: thống kê mean/std theo từng keypoint (bỏ qua NaN) + LogisticRegression.")
     ap.add_argument("--data", type=Path, default=here / "data")
     ap.add_argument("--out", type=Path, default=here / "submission.csv")
     ap.add_argument("--split", choices=["public", "private"], default="public")

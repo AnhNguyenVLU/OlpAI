@@ -1,8 +1,3 @@
-"""Baseline bài B — Common Neighbors: điểm = số cộng sự chung trên đồ thị đồng tác giả đến 2023.
-
-python baseline.py [--data data] [--split public|private] [--out submission.csv]
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -18,7 +13,7 @@ from common.scoring import require_data  # noqa: E402
 
 def main() -> None:
     here = Path(__file__).parent
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap = argparse.ArgumentParser(description="Baseline bài B — Common Neighbors: điểm = số cộng sự chung trên đồ thị đồng tác giả đến 2023.")
     ap.add_argument("--data", type=Path, default=here / "data")
     ap.add_argument("--split", choices=["public", "private"], default="public")
     ap.add_argument("--out", type=Path, default=Path("submission.csv"))

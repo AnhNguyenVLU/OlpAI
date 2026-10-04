@@ -1,10 +1,3 @@
-"""Baseline bài A: dịch từng từ bằng từ điển đồng xuất hiện (hệ số Dice), giữ nguyên trật tự nguồn.
-
-- Mỗi từ nguồn (nguyên dạng bề mặt, không tách hậu tố) -> các âm tiết tiếng Việt có Dice cao nhất.
-- Từ chưa gặp: viết hoa thì chép nguyên (tên riêng), ngược lại bỏ qua.
-Dùng: python baseline.py --data data --out submission.csv [--split public|private]
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -55,7 +48,7 @@ def translate(sent: str, lex: dict[str, list[str]]) -> str:
 
 def main() -> None:
     here = Path(__file__).resolve().parent
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap = argparse.ArgumentParser(description="Baseline bài A: dịch từng từ bằng từ điển đồng xuất hiện (hệ số Dice), giữ nguyên trật tự nguồn.")
     ap.add_argument("--data", type=Path, default=here / "data")
     ap.add_argument("--out", type=Path, default=here / "submission.csv")
     ap.add_argument("--split", choices=["public", "private"], default="public")

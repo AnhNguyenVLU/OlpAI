@@ -1,8 +1,3 @@
-"""Chấm bài B (nhận dạng ký hiệu tay): macro-F1 trên 30 lớp, kèm accuracy tham khảo.
-
-Dùng: python score.py --pred submission.csv --data data [--split public|private]
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -22,7 +17,7 @@ TARGET = 0.94
 
 def main() -> None:
     here = Path(__file__).resolve().parent
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap = argparse.ArgumentParser(description="Chấm bài B (nhận dạng ký hiệu tay): macro-F1 trên 30 lớp, kèm accuracy tham khảo.")
     ap.add_argument("--pred", type=Path, default=here / "submission.csv")
     ap.add_argument("--data", type=Path, default=here / "data")
     ap.add_argument("--split", choices=["public", "private"], default="public")

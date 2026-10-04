@@ -1,13 +1,3 @@
-"""Baseline Bài A — seasonal naive (cùng giờ tuần trước) với khoảng cố định ±15%.
-
-- Lịch sử = train/load.csv + <split>/history.csv (số liệu đo sau train, có thể rỗng).
-- P50(t) = load(t − 168h); nếu ô đó bị mất điện (0) hoặc thiếu số liệu thì dùng load(t − 336h);
-  nếu vẫn không có (trạm mới < 2 tuần) thì dùng trung vị theo giờ-trong-ngày của lịch sử hợp lệ.
-- P10 = 0.85 · P50, P90 = 1.15 · P50.
-
-Cách dùng: python baseline.py [--data ./data] [--out ./submission.csv] [--split public|private]
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -24,7 +14,7 @@ HERE = Path(__file__).parent
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap = argparse.ArgumentParser(description="Baseline Bài A — seasonal naive (cùng giờ tuần trước) với khoảng cố định ±15%.")
     ap.add_argument("--data", type=Path, default=HERE / "data")
     ap.add_argument("--out", type=Path, default=HERE / "submission.csv")
     ap.add_argument("--split", choices=["public", "private"], default="public")

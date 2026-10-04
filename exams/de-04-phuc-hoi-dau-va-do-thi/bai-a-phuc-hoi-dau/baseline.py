@@ -1,8 +1,3 @@
-"""Baseline bài A — unigram: mỗi âm tiết không dấu -> dạng có dấu phổ biến nhất trong train.
-
-python baseline.py [--data data] [--split public|private] [--out submission.csv]
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -21,20 +16,17 @@ EDGE_RE = re.compile(r"^(\W*)(.*?)(\W*)$", re.UNICODE)
 
 
 def strip_accents(s: str) -> str:
-    """Bỏ toàn bộ dấu tiếng Việt (kể cả đ -> d)."""
     s = unicodedata.normalize("NFD", s)
     s = "".join(c for c in s if unicodedata.category(c) != "Mn")
     return unicodedata.normalize("NFC", s.replace("đ", "d").replace("Đ", "D"))
 
 
 def split_token(tok: str) -> tuple[str, str, str]:
-    """Tách dấu câu dính ở hai đầu: '"Bạn,' -> ('"', 'Bạn', ',')."""
     m = EDGE_RE.match(tok)
     return m.group(1), m.group(2), m.group(3)
 
 
 def apply_case(src: str, dst: str) -> str:
-    """Chép kiểu viết hoa từng ký tự của src sang dst (cùng độ dài sau khi bỏ dấu)."""
     if len(src) != len(dst):
         return dst
     return "".join(d.upper() if s.isupper() else d for s, d in zip(src, dst))
@@ -42,7 +34,7 @@ def apply_case(src: str, dst: str) -> str:
 
 def main() -> None:
     here = Path(__file__).parent
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap = argparse.ArgumentParser(description="Baseline bài A — unigram: mỗi âm tiết không dấu -> dạng có dấu phổ biến nhất trong train.")
     ap.add_argument("--data", type=Path, default=here / "data")
     ap.add_argument("--split", choices=["public", "private"], default="public")
     ap.add_argument("--out", type=Path, default=Path("submission.csv"))

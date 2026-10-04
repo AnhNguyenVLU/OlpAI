@@ -1,11 +1,3 @@
-"""Chấm Bài A: score = 0.7 * mIoU + 0.3 * (1 - min(1, MAE_count / K)), K = 3.
-
-mIoU: tích luỹ ma trận nhầm lẫn trên toàn bộ pixel tập test, IoU từng lớp (4 lớp), lấy trung bình.
-MAE_count: sai số tuyệt đối trung bình của cột count so với số thửa ruộng thật.
-
-Dùng: python score.py [--pred ./submission.csv] [--data ./data] [--split public|private]
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -26,7 +18,6 @@ THRESHOLD = Threshold(baseline=0.31, target=0.57)  # đo trên tập ẩn, chi t
 
 
 def rle_decode(s: str, iid: str) -> np.ndarray:
-    """'nhan:do_dai ...' -> mask (H, W). Báo lỗi nếu sai cú pháp / sai tổng độ dài."""
     labels, lengths = [], []
     for tok in str(s).split():
         parts = tok.split(":")
@@ -44,7 +35,7 @@ def rle_decode(s: str, iid: str) -> np.ndarray:
 
 def main() -> None:
     here = Path(__file__).parent
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap = argparse.ArgumentParser(description="Chấm Bài A: score = 0.7 * mIoU + 0.3 * (1 - min(1, MAE_count / K)), K = 3.")
     ap.add_argument("--pred", type=Path, default=here / "submission.csv")
     ap.add_argument("--data", type=Path, default=here / "data")
     ap.add_argument("--split", choices=["public", "private"], default="public")

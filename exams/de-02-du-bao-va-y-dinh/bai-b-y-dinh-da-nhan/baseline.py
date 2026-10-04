@@ -1,8 +1,3 @@
-"""Baseline Bài B — TF-IDF (từ) + One-vs-Rest Logistic Regression, ngưỡng 0.5.
-
-Cách dùng: python baseline.py [--data ./data] [--out ./submission.csv] [--split public|private]
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -22,7 +17,7 @@ HERE = Path(__file__).parent
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap = argparse.ArgumentParser(description="Baseline Bài B — TF-IDF (từ) + One-vs-Rest Logistic Regression, ngưỡng 0.5.")
     ap.add_argument("--data", type=Path, default=HERE / "data")
     ap.add_argument("--out", type=Path, default=HERE / "submission.csv")
     ap.add_argument("--split", choices=["public", "private"], default="public")

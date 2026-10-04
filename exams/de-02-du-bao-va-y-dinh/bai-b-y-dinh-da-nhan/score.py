@@ -1,10 +1,3 @@
-"""Chấm Bài B — trung bình micro-F1 và macro-F1 trên 15 nhãn ý định.
-
-metric = (micro_F1 + macro_F1) / 2. Nhãn trong cột `labels` cách nhau bởi '|', được phép rỗng.
-
-Cách dùng: python score.py [--pred ./submission.csv] [--data ./data] [--split public|private]
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -36,7 +29,7 @@ def to_matrix(series: pd.Series, labels: list[str]) -> np.ndarray:
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap = argparse.ArgumentParser(description="Chấm Bài B — trung bình micro-F1 và macro-F1 trên 15 nhãn ý định.")
     ap.add_argument("--pred", type=Path, default=HERE / "submission.csv")
     ap.add_argument("--data", type=Path, default=HERE / "data")
     ap.add_argument("--split", choices=["public", "private"], default="public")

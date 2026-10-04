@@ -1,8 +1,3 @@
-"""Baseline Bài B: LogisticRegression trên các đặc trưng số (impute median + chuẩn hoá).
-
-Dùng: python baseline.py [--data ./data] [--out ./submission.csv] [--split public|private]
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -21,7 +16,7 @@ from common.scoring import require_data  # noqa: E402
 
 def main() -> None:
     here = Path(__file__).parent
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap = argparse.ArgumentParser(description="Baseline Bài B: LogisticRegression trên các đặc trưng số (impute median + chuẩn hoá).")
     ap.add_argument("--data", type=Path, default=here / "data")
     ap.add_argument("--out", type=Path, default=here / "submission.csv")
     ap.add_argument("--split", choices=["public", "private"], default="public")

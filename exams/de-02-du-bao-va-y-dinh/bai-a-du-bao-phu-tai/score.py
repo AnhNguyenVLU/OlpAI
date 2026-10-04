@@ -1,11 +1,3 @@
-"""Chấm Bài A — pinball loss trung bình (P10/P50/P90) chuẩn hoá theo quy mô trạm.
-
-Với mỗi trạm s: L_s = mean_{t,q} pinball_q(y, ŷ_q) / mean_t(y). Metric = mean_s L_s (càng nhỏ càng
-tốt). Nếu các phân vị bị "chéo" (p10 > p50 ...), chúng được sắp xếp lại theo từng dòng.
-
-Cách dùng: python score.py [--pred ./submission.csv] [--data ./data] [--split public|private]
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -32,7 +24,7 @@ def pinball(y: np.ndarray, pred: np.ndarray, q: float) -> np.ndarray:
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap = argparse.ArgumentParser(description="Chấm Bài A — pinball loss trung bình (P10/P50/P90) chuẩn hoá theo quy mô trạm.")
     ap.add_argument("--pred", type=Path, default=HERE / "submission.csv")
     ap.add_argument("--data", type=Path, default=HERE / "data")
     ap.add_argument("--split", choices=["public", "private"], default="public")

@@ -1,12 +1,3 @@
-"""Chấm bài B — Gợi ý hợp tác nghiên cứu (MRR trên 100 ứng viên mỗi truy vấn).
-
-python score.py [--pred submission.csv] [--data data] [--split public|private]
-
-Hạng của một ứng viên dương = 1 + #âm có điểm lớn hơn + 0.5 · #âm có điểm bằng (các dương khác không tính).
-RR của truy vấn = 1 / hạng tốt nhất trong các dương. Metric chính: MRR. Báo thêm Hits@10 và nửa độ rộng
-khoảng tin cậy 95% của MRR (mrr_ci95, xấp xỉ chuẩn).
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -24,7 +15,7 @@ THRESHOLD = Threshold(baseline=0.214, target=0.330)  # đo trên tập ẩn, chi
 
 def main() -> None:
     here = Path(__file__).parent
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap = argparse.ArgumentParser(description="Chấm bài B — Gợi ý hợp tác nghiên cứu (MRR trên 100 ứng viên mỗi truy vấn).")
     ap.add_argument("--pred", type=Path, default=Path("submission.csv"))
     ap.add_argument("--data", type=Path, default=here / "data")
     ap.add_argument("--split", choices=["public", "private"], default="public")

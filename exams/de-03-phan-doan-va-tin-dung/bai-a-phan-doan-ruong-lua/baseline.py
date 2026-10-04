@@ -1,13 +1,3 @@
-"""Baseline Bài A: phân loại từng pixel theo màu RGB bằng RandomForest + đếm thành phần liên thông.
-
-- Lấy mẫu ngẫu nhiên pixel từ ảnh train, đặc trưng = (R, G, B) thô.
-- Dự đoán nhãn cho mọi pixel ảnh test.
-- Đếm thửa: mask theo màu quá nhiễu để đếm thành phần liên thông (hàm count_fields bên dưới
-  cho biết định nghĩa), nên baseline nộp hằng số = trung vị số thửa trong train.
-
-Dùng: python baseline.py [--data ./data] [--out ./submission.csv] [--split public|private]
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -28,7 +18,6 @@ PIXELS_PER_IMAGE = 100
 
 
 def rle_encode(mask: np.ndarray) -> str:
-    """Mask nhãn (flatten row-major) -> 'nhan:do_dai nhan:do_dai ...'."""
     flat = mask.ravel()
     starts = np.r_[0, np.flatnonzero(np.diff(flat)) + 1]
     lengths = np.diff(np.r_[starts, flat.size])
@@ -36,7 +25,6 @@ def rle_encode(mask: np.ndarray) -> str:
 
 
 def count_fields(mask: np.ndarray) -> int:
-    """Số thành phần liên thông 4-láng giềng của lớp 0 có >= 12 pixel (định nghĩa 'thửa ruộng')."""
     lab, n = ndimage.label(mask == 0)
     if n == 0:
         return 0
@@ -45,7 +33,7 @@ def count_fields(mask: np.ndarray) -> int:
 
 def main() -> None:
     here = Path(__file__).parent
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap = argparse.ArgumentParser(description="Baseline Bài A: phân loại từng pixel theo màu RGB bằng RandomForest + đếm thành phần liên thông.")
     ap.add_argument("--data", type=Path, default=here / "data")
     ap.add_argument("--out", type=Path, default=here / "submission.csv")
     ap.add_argument("--split", choices=["public", "private"], default="public")

@@ -1,8 +1,3 @@
-"""Chấm Bài B: ROC-AUC trên tập test (điểm), kèm Brier score để tham khảo.
-
-Dùng: python score.py [--pred ./submission.csv] [--data ./data] [--split public|private]
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -21,7 +16,7 @@ THRESHOLD = Threshold(baseline=0.68, target=0.79)  # đo trên tập ẩn, chi t
 
 def main() -> None:
     here = Path(__file__).parent
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap = argparse.ArgumentParser(description="Chấm Bài B: ROC-AUC trên tập test (điểm), kèm Brier score để tham khảo.")
     ap.add_argument("--pred", type=Path, default=here / "submission.csv")
     ap.add_argument("--data", type=Path, default=here / "data")
     ap.add_argument("--split", choices=["public", "private"], default="public")
