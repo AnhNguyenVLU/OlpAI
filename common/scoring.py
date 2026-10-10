@@ -50,6 +50,9 @@ def read_submission(path: str | Path, required: Iterable[str], **read_csv_kwargs
     except Exception as exc:  # noqa: BLE001 - mọi lỗi parse đều là lỗi định dạng
         fail(f"không đọc được {path} dưới dạng CSV UTF-8 ({exc}).")
     df.columns = [str(c).strip().lower() for c in df.columns]
+    dup = [c for c in required if list(df.columns).count(c) > 1]
+    if dup:
+        fail(f"cột {dup} bị trùng tên (không phân biệt hoa/thường).")
     missing = [c for c in required if c not in df.columns]
     if missing:
         hint = ""
