@@ -36,3 +36,4 @@ exams/**/generate_data.py
 exams/**/SOLUTION_NOTES.md
 exams/**/TEACHER.md
 teacher-kit*.zip
+scripts/smoke_test_teacher.sh

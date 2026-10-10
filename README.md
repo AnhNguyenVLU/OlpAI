@@ -1,6 +1,6 @@
 # OlpAI — Bộ đề luyện thi Olympic Trí tuệ nhân tạo Sinh viên
 
-Bộ 5 đề luyện thi cho **Olympic Trí tuệ nhân tạo Sinh viên Việt Nam (OlpAI)**. Nội dung bám theo đề tham khảo
+Bộ đề luyện thi cho **Olympic Trí tuệ nhân tạo Sinh viên Việt Nam (OlpAI)**. Nội dung bám theo đề tham khảo
 OlpAI'25: dịch máy, nhận dạng ngôn ngữ ký hiệu, ba mảng ML / CV / NLP. Cách trình bày theo khung đề
 [IOAI 2026 — Individual Contest](https://github.com/IOAI-official/IOAI-2026/tree/main/Individual-Contest).
 
@@ -17,6 +17,7 @@ mới đạt điểm cao.
 | [03 — Phân đoạn & Tín dụng](exams/de-03-phan-doan-va-tin-dung) | CV · Phân đoạn ruộng lúa + đếm thửa, đổi mùa (mIoU) | ML · Dự đoán vỡ nợ vi mô, rò rỉ + drift (ROC-AUC) |
 | [04 — Phục hồi dấu & Đồ thị](exams/de-04-phuc-hoi-dau-va-do-thi) | NLP · Phục hồi dấu tiếng Việt (độ chính xác âm tiết) | ML · Gợi ý hợp tác nghiên cứu, link prediction (MRR) |
 | [05 — Few-shot & Xếp hạng](exams/de-05-few-shot-va-xep-hang) | CV · Chữ "kiểu Nôm" 20-way 5-shot, lớp mới (accuracy) | ML · Gợi ý khoá học top-10 (NDCG@10) |
+| [08 — Đối kháng & Nhân quả](exams/de-08-doi-khang-va-nhan-qua) | CV · Tấn công đối kháng: làm MLP và rừng cây bất đồng bằng nhiễu nhỏ (thành công × hệ số phạt) | ML · Uplift: chọn khách gửi voucher từ dữ liệu quan sát có nhiễu gây nhầm (uplift@30%) |
 
 Mỗi đề gồm 2 bài, thi theo đội 3 người trong **6 giờ**, mỗi bài 100 điểm.
 
@@ -50,13 +51,8 @@ Quy định chung: chỉ dùng dữ liệu được cấp. **Không** dùng dữ
 
 ## Dành cho giáo viên / BTC
 
-Toàn bộ dữ liệu là **tổng hợp**. Tập chấm ẩn (`data/_private/`) **không** nằm trong repo này. Bộ công cụ giáo viên
-gồm generator, hướng dẫn sinh tập ẩn bằng seed bí mật, lời giải tham khảo và mốc điểm. Bộ này được phát riêng để
-sinh viên không suy ngược ra được đáp án. Khi có tập ẩn, chấm bài của một đội như sau:
+Toàn bộ dữ liệu là **tổng hợp**. Tập chấm ẩn do BTC giữ và không nằm trong repo này. Nó được phát riêng, cùng
+tài liệu giáo viên (lời giải tham khảo, mốc điểm), để sinh viên không suy ngược ra được đáp án. Khi đã có tập ẩn,
+chấm bài của một đội bằng `python score.py --split private --pred <file nộp>` trong thư mục từng bài.
 
-```bash
-python <lời giải của đội>.py --split private --out team.csv
-python score.py --split private --pred team.csv
-```
-
-Kiểm tra nhanh toàn bộ repo: `scripts/smoke_test.sh` (khoảng 30 giây).
+Kiểm tra nhanh toàn bộ repo: `scripts/smoke_test.sh` (chạy baseline và chấm trên dữ liệu public của mọi bài).
