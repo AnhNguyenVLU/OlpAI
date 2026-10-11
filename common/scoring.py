@@ -50,7 +50,12 @@ def read_submission(path: str | Path, required: Iterable[str], **read_csv_kwargs
     except Exception as exc:  # noqa: BLE001 - mọi lỗi parse đều là lỗi định dạng
         fail(f"không đọc được {path} dưới dạng CSV UTF-8 ({exc}).")
     df.columns = [str(c).strip().lower() for c in df.columns]
-    dup = [c for c in required if list(df.columns).count(c) > 1]
+    try:
+        raw = pd.read_csv(path, encoding="utf-8-sig", header=None, nrows=1, dtype=str, keep_default_na=False)
+        raw_names = [str(c).strip().lower() for c in raw.iloc[0].tolist()]
+    except Exception:  # noqa: BLE001 - không đọc được dòng tiêu đề thô thì bỏ qua kiểm tra trùng
+        raw_names = []
+    dup = [c for c in required if raw_names.count(c) > 1]
     if dup:
         fail(f"cột {dup} bị trùng tên (không phân biệt hoa/thường).")
     missing = [c for c in required if c not in df.columns]
