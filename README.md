@@ -21,6 +21,7 @@ mới đạt điểm cao.
 | [07 — Xe máy & Văn bản máy](exams/de-07-xe-may-va-van-ban-may) | CV · Phát hiện xe máy có người lái ở camera lạ, ban đêm, mưa (AP@0.5) | NLP · Tìm ranh giới giữa phần người viết và phần máy viết (điểm giảm theo khoảng cách ký tự) |
 | [08 — Đối kháng & Nhân quả](exams/de-08-doi-khang-va-nhan-qua) | CV · Tấn công đối kháng: làm MLP và rừng cây bất đồng bằng nhiễu nhỏ (thành công × hệ số phạt) | ML · Uplift: chọn khách gửi voucher từ dữ liệu quan sát có nhiễu gây nhầm (uplift@30%) |
 | [09 — Biển số & Địa chỉ](exams/de-09-bien-so-va-dia-chi) | CV · Đọc biển số xe từ ảnh xám nhiễu, đổi camera và kiểu phông (1 − Levenshtein chuẩn hoá) | NLP · Chuẩn hoá địa chỉ giao hàng sang đơn vị hành chính mới sau sáp nhập (độ chính xác 4 trường) |
+| [10 — Ảnh–chú thích & Robot](exams/de-10-anh-chu-thich-va-robot) | Đa phương thức · Tìm đúng ảnh trong 20 ứng viên theo chú thích tiếng Việt, đổi ánh sáng và tổ hợp mới (MRR) | NLP · Dự đoán hành động kế tiếp của sáu robot kho hàng từ lệnh tiếng Việt và ảnh chụp trạng thái (độ chính xác theo robot) |
 
 Mỗi đề gồm 2 bài, thi theo đội 3 người trong **6 giờ**, mỗi bài 100 điểm.
 
