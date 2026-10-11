@@ -17,6 +17,7 @@ mới đạt điểm cao.
 | [03 — Phân đoạn & Tín dụng](exams/de-03-phan-doan-va-tin-dung) | CV · Phân đoạn ruộng lúa + đếm thửa, đổi mùa (mIoU) | ML · Dự đoán vỡ nợ vi mô, rò rỉ + drift (ROC-AUC) |
 | [04 — Phục hồi dấu & Đồ thị](exams/de-04-phuc-hoi-dau-va-do-thi) | NLP · Phục hồi dấu tiếng Việt (độ chính xác âm tiết) | ML · Gợi ý hợp tác nghiên cứu, link prediction (MRR) |
 | [05 — Few-shot & Xếp hạng](exams/de-05-few-shot-va-xep-hang) | CV · Chữ "kiểu Nôm" 20-way 5-shot, lớp mới (accuracy) | ML · Gợi ý khoá học top-10 (NDCG@10) |
+| [07 — Xe máy & Văn bản máy](exams/de-07-xe-may-va-van-ban-may) | CV · Phát hiện xe máy có người lái ở camera lạ, ban đêm, mưa (AP@0.5) | NLP · Tìm ranh giới giữa phần người viết và phần máy viết (điểm giảm theo khoảng cách ký tự) |
 | [08 — Đối kháng & Nhân quả](exams/de-08-doi-khang-va-nhan-qua) | CV · Tấn công đối kháng: làm MLP và rừng cây bất đồng bằng nhiễu nhỏ (thành công × hệ số phạt) | ML · Uplift: chọn khách gửi voucher từ dữ liệu quan sát có nhiễu gây nhầm (uplift@30%) |
 | [09 — Biển số & Địa chỉ](exams/de-09-bien-so-va-dia-chi) | CV · Đọc biển số xe từ ảnh xám nhiễu, đổi camera và kiểu phông (1 − Levenshtein chuẩn hoá) | NLP · Chuẩn hoá địa chỉ giao hàng sang đơn vị hành chính mới sau sáp nhập (độ chính xác 4 trường) |
 
