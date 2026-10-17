@@ -22,6 +22,7 @@ mới đạt điểm cao.
 | [08 — Đối kháng & Nhân quả](exams/de-08-doi-khang-va-nhan-qua) | CV · Tấn công đối kháng: làm MLP và rừng cây bất đồng bằng nhiễu nhỏ (thành công × hệ số phạt) | ML · Uplift: chọn khách gửi voucher từ dữ liệu quan sát có nhiễu gây nhầm (uplift@30%) |
 | [09 — Biển số & Địa chỉ](exams/de-09-bien-so-va-dia-chi) | CV · Đọc biển số xe từ ảnh xám nhiễu, đổi camera và kiểu phông (1 − Levenshtein chuẩn hoá) | NLP · Chuẩn hoá địa chỉ giao hàng sang đơn vị hành chính mới sau sáp nhập (độ chính xác 4 trường) |
 | [10 — Ảnh–chú thích & Robot](exams/de-10-anh-chu-thich-va-robot) | Đa phương thức · Tìm đúng ảnh trong 20 ứng viên theo chú thích tiếng Việt, đổi ánh sáng và tổ hợp mới (MRR) | NLP · Dự đoán hành động kế tiếp của sáu robot kho hàng từ lệnh tiếng Việt và ảnh chụp trạng thái (độ chính xác theo robot) |
+| [11 — Đánh giá & Kiểm lỗi](exams/de-11-danh-gia-va-kiem-loi) | NLP · Khen chê theo 8 khía cạnh trong đánh giá khách sạn, gõ không dấu và đánh giá vừa khen vừa chê (micro-F1) | CV · Phát hiện và chỉ vị trí lỗi gạch men dưới đèn xưởng mới, có loại lỗi chưa thấy (0.7·AUROC + 0.3·Pointing) |
 
 Mỗi đề gồm 2 bài, thi theo đội 3 người trong **6 giờ**, mỗi bài 100 điểm.
 
